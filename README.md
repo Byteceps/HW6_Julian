@@ -1,10 +1,16 @@
-## HW 6: Julian Prince
+# HW 6: Julian Prince
 
-### Building the program
+## The Exercise
+The goal of this exercise is to design and build a simple tree-like data structure that stores keys and values. Unlike a python dictionary, where the main job of the data structure is to access keys efficiently (using a hash table), the main job of this data structure is simply to maintain and traverse a binary search tree. This tree is not a binary search tree and doesn't need to be sorted or balanced. 
+
+## Building the program
+
 * This program can be compiled with the following commands:
-    * g++ -g -Wall -Wextra -pedantic -Werror  -std=c++17 -fsanitize=address tree.cc test_tree.cc  -o tree
 
-### Design Choices
+    * g++ -g -Wall -Wextra -pedantic -Werror -std=c++17 -fsanitize=address tree.cc test_tree.cc -o tree
+
+## Design Choices
+
 **path_to**
 This function takes advantage of the helper function is_in_tree to return a string representing the path to a given node in a tree. is_in_tree returns a boolean value for whether or not a given key exists within a given tree. This function recursivley traverses the left and right branches of a tree, and stores in a vector array the keys for each leaf on the way to the desired node/key. The array is essential for the path_to function. I iterate over the array and compare each index to the keys on the left and right of the root node. If there is a match then I store the corresponding direction character in a string, and move a tree_ptr_t to that node, repeat the process until the end of the array is reached. 
 

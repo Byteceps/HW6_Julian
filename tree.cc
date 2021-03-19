@@ -9,8 +9,7 @@
 #include <string>
 #include <cassert>
 
-//create_tree(const key_t& key, const value_t& value, tree_ptr_t left = nullptr, tree_ptr_t right = nullptr)
-//
+//create_tree:
 //create_tree allocates space for a new tree node and fills it with the given data parameters
 //
 tree_ptr_t create_tree(const key_t& key, const value_t& value, tree_ptr_t left, tree_ptr_t right){
@@ -42,9 +41,16 @@ bool is_in_tree(tree_ptr_t tree, key_t key, std::vector<int>& arr){
     return false;
 }
 
-
-
+// path_to
+// return a string representing the path taken from a given tree root
+// to a given key in the tree. For each left child taken along the path, the
+// string contains an 'L' character, and 'R' for a right child, in order.
+//
 std::string path_to(tree_ptr_t tree, key_t key){
+    //Check if root is nullptr
+    if(!tree){
+        return "-";
+    }
     std::vector<int> arr;
     std::string path = "";
     //Check if tree has no leaves and the root matches the key
@@ -123,20 +129,5 @@ std::string path_to(tree_ptr_t tree, key_t key){
      }
      return current;
  }
-    
 
-/*int main(){
-    tree_ptr_t tree = create_deep_balanced_tree();
-    tree->left_ = create_tree(40,2);
-    tree->right_ = create_tree(60, 3);
-    tree->left_->left_ = create_tree(80, 4);
-    tree->left_->right_ = create_tree(100, 5);
-    tree->right_->left_ = create_tree(120, 6);
-    tree->right_->right_ = create_tree(140,8);
-
-    std::string path = path_to(tree, 120);
-    std::cout << "Path is: " << path << std::endl;
-    return 0;
-}
-*/
 

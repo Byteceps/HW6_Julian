@@ -84,7 +84,11 @@ int main(){
 
     //When tree has duplicate keys
     tree_ptr_t tree_duplicates = create_tree_duplicate_keys();
-    assert(path_to(tree_duplicates, 12) == "LL" && "Tree with duplicate keys returns leftmost one");
+    assert(path_to(tree_duplicates, 12) == "LL" && "path_to tree with duplicate keys returns leftmost one");
+
+    //When root is a nullptr
+    tree_ptr_t null_tree = create_nullptr_root();
+    assert(path_to(null_tree, 10) == "-" && "path_to nullptr returns - ");
 
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -117,44 +121,9 @@ int main(){
     // Path leads to nullptr
     assert(node_at(tree, "LRRL") == nullptr && "Path leading to invalid node returns nullptr");
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    // destroy_tree test case
-   
+    //Return test trees to heap
+    destroy_tree(tree);
+    destroy_tree(tree_duplicates);
+
     return 0;
 }
-/* I wish this worked
-TEST_CASE( "PATH_TO TEST CASES", "[path_to]" ){
-    SECTION( "Want path to root of tree" ){
-        tree_ptr_t tree = create_shallow_balanced_tree();
-        REQUIRE ( path_to(tree, 20) == "" );
-}
-    }
-    SECTION( "Want path to shallow left node" ){
-        tree_ptr_t tree = create_shallow_balanced_tree();
-        REQUIRE ( path_to(tree, 40) == "L" );
-    }
-    SECTION( "Want path to shallow right node" ){
-        tree_ptr_t tree = create_shallow_balanced_tree();
-        REQUIRE( path_to(tree, 60) == "R");
-    }
-}
-*/
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
